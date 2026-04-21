@@ -37,7 +37,6 @@ const html = `
       padding: 40px 24px 80px;
     }
 
-    /* ── Grid lines background ── */
     body::before {
       content: '';
       position: fixed;
@@ -57,14 +56,14 @@ const html = `
       margin: 0 auto;
     }
 
-    /* ── Animations ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50%       { opacity: 0.4; }
+      50% { opacity: 0.4; }
     }
 
     .fade-1 { animation: fadeUp 0.5s ease both 0.05s; }
@@ -75,7 +74,6 @@ const html = `
     .fade-6 { animation: fadeUp 0.5s ease both 0.55s; }
     .fade-7 { animation: fadeUp 0.5s ease both 0.65s; }
 
-    /* ── Header ── */
     .header { margin-bottom: 40px; }
 
     .badge-row {
@@ -97,13 +95,16 @@ const html = `
     .badge-green { background: var(--green-dim); border-color: rgba(34,197,94,0.35);  color: #86efac; }
     .badge-amber { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.35); color: #fcd34d; }
 
-    /* CI badge image aligns with text badges */
     .badge-ci {
       display: inline-flex;
       align-items: center;
       height: 25px;
     }
-    .badge-ci img { height: 20px; display: block; }
+
+    .badge-ci img {
+      height: 20px;
+      display: block;
+    }
 
     h1 {
       font-size: clamp(32px, 6vw, 52px);
@@ -123,7 +124,6 @@ const html = `
       max-width: 600px;
     }
 
-    /* ── Status bar ── */
     .status-bar {
       display: flex;
       align-items: center;
@@ -139,14 +139,14 @@ const html = `
     }
 
     .dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--green);
       animation: pulse 2s infinite;
       flex-shrink: 0;
     }
 
-    /* ── Metrics ── */
     .metrics {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -183,7 +183,6 @@ const html = `
       margin-left: 4px;
     }
 
-    /* ── Section title ── */
     .section-label {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 10px;
@@ -203,7 +202,6 @@ const html = `
       background: var(--border);
     }
 
-    /* ── Architecture diagram ── */
     .diagram {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -263,7 +261,6 @@ const html = `
       flex-shrink: 0;
     }
 
-    /* ── Cards grid ── */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -313,13 +310,13 @@ const html = `
 
     .card-items li::before {
       content: '';
-      width: 4px; height: 4px;
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
       background: var(--blue);
       flex-shrink: 0;
     }
 
-    /* ── Lessons ── */
     .lessons {
       display: grid;
       grid-template-columns: 1fr;
@@ -352,9 +349,11 @@ const html = `
       line-height: 1.6;
     }
 
-    .lesson-text strong { color: var(--text); font-weight: 600; }
+    .lesson-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
 
-    /* ── Timeline ── */
     .timeline { margin-bottom: 36px; }
 
     .tl-item {
@@ -367,14 +366,16 @@ const html = `
     .tl-item:not(:last-child)::after {
       content: '';
       position: absolute;
-      left: 7px; top: 18px;
+      left: 7px;
+      top: 18px;
       width: 1px;
       height: calc(100% - 10px);
       background: var(--border);
     }
 
     .tl-dot {
-      width: 16px; height: 16px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       border: 2px solid var(--border);
       background: var(--surface);
@@ -412,7 +413,6 @@ const html = `
       line-height: 1.5;
     }
 
-    /* ── Footer ── */
     .footer {
       display: flex;
       align-items: center;
@@ -423,8 +423,14 @@ const html = `
       padding-top: 24px;
     }
 
-    .footer-left { font-size: 13px; color: var(--muted); }
-    .footer-left strong { color: var(--text); }
+    .footer-left {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-left strong {
+      color: var(--text);
+    }
 
     .gh-link {
       font-family: 'IBM Plex Mono', monospace;
@@ -437,12 +443,13 @@ const html = `
       transition: background 0.2s;
     }
 
-    .gh-link:hover { background: var(--blue-dim); }
+    .gh-link:hover {
+      background: var(--blue-dim);
+    }
 
-    /* ── Responsive ── */
     @media (max-width: 680px) {
       .metrics { grid-template-columns: repeat(2, 1fr); }
-      .cards   { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 420px) {
@@ -453,7 +460,6 @@ const html = `
 <body>
   <main>
 
-    <!-- HEADER -->
     <header class="header fade-1">
       <div class="badge-row">
         <span class="badge badge-blue">Azure Portfolio</span>
@@ -470,39 +476,36 @@ const html = `
 
       <h1>Azure Cloud <span>Lab</span></h1>
       <p class="subtitle">
-        Projeto prático de cloud engineering demonstrando networking, platform services
-        e CI/CD automation no Azure — feito para aprender e para o portfolio.
+        Hands-on cloud engineering project demonstrating Azure networking, platform services,
+        and CI/CD automation with GitHub Actions — built to develop practical Azure skills and strengthen my portfolio.
       </p>
     </header>
 
-    <!-- STATUS BAR -->
     <div class="status-bar fade-2">
       <div class="dot"></div>
-      App Service online &nbsp;·&nbsp; West Europe &nbsp;·&nbsp; B1 tier &nbsp;·&nbsp; Auto-deploy via GitHub Actions
+      App Service online &nbsp;·&nbsp; West Europe &nbsp;·&nbsp; Free tier &nbsp;·&nbsp; Auto-deploy via GitHub Actions
     </div>
 
-    <!-- METRICS -->
     <div class="metrics fade-3">
       <div class="metric">
-        <div class="metric-label">Recursos Azure</div>
-        <div class="metric-value">12<span>total</span></div>
+        <div class="metric-label">Architecture</div>
+        <div class="metric-value">Hub<span>Spoke</span></div>
       </div>
       <div class="metric">
         <div class="metric-label">VNets</div>
-        <div class="metric-value">3<span>peered</span></div>
+        <div class="metric-value">2<span>peered</span></div>
       </div>
       <div class="metric">
-        <div class="metric-label">Build time</div>
-        <div class="metric-value">~45<span>sec</span></div>
+        <div class="metric-label">Runtime</div>
+        <div class="metric-value">Node<span>20</span></div>
       </div>
       <div class="metric">
-        <div class="metric-label">Custo / mês</div>
-        <div class="metric-value">~$8<span>USD</span></div>
+        <div class="metric-label">Deployment</div>
+        <div class="metric-value">CI/CD<span>GitHub</span></div>
       </div>
     </div>
 
-    <!-- ARCHITECTURE -->
-    <div class="section-label fade-4">Arquitetura</div>
+    <div class="section-label fade-4">Architecture</div>
     <div class="diagram fade-4">
       <div class="diag-flow">
         <div class="diag-node">
@@ -526,29 +529,28 @@ const html = `
         <div class="diag-node accent">
           <span class="diag-icon">▣</span>
           <span class="diag-name">App Service</span>
-          <span class="diag-sub">Linux · B1</span>
+          <span class="diag-sub">Linux · Free</span>
         </div>
       </div>
     </div>
 
-    <!-- COMPONENTS CARDS -->
-    <div class="section-label fade-5">Componentes</div>
+    <div class="section-label fade-5">Components</div>
     <div class="cards fade-5">
       <div class="card">
         <div class="card-title">Networking</div>
         <ul class="card-items">
           <li>Hub-and-Spoke design</li>
-          <li>VNet peering privado</li>
+          <li>Private VNet peering</li>
           <li>Subnet segmentation</li>
-          <li>NSG rules configuradas</li>
+          <li>Basic network topology design</li>
         </ul>
       </div>
       <div class="card">
         <div class="card-title">App Platform</div>
         <ul class="card-items">
-          <li>Azure App Service Linux</li>
+          <li>Azure App Service on Linux</li>
           <li>Node.js 20 runtime</li>
-          <li>Deployment slots</li>
+          <li>Simple web app hosting</li>
           <li>Health check endpoint</li>
         </ul>
       </div>
@@ -556,79 +558,76 @@ const html = `
         <div class="card-title">DevOps</div>
         <ul class="card-items">
           <li>GitHub Actions pipeline</li>
-          <li>Auto deploy on push</li>
-          <li>Service Principal auth</li>
-          <li>Secrets via env vars</li>
+          <li>Automatic deploy on push</li>
+          <li>Deployment via publish profile</li>
+          <li>Source control with GitHub</li>
         </ul>
       </div>
     </div>
 
-    <!-- LESSONS LEARNED -->
     <div class="section-label fade-6">Lessons Learned</div>
     <div class="lessons fade-6">
       <div class="lesson">
         <span class="lesson-num">01</span>
         <p class="lesson-text">
-          <strong>VNet peering não é transitivo.</strong>
-          O tráfego entre dois spokes não passa automaticamente pelo hub — foi necessário configurar UDRs (User Defined Routes) explícitas para garantir a conectividade.
+          <strong>VNet peering is not transitive.</strong>
+          This project reinforced the importance of understanding Azure network communication paths and how hub-and-spoke designs behave in practice.
         </p>
       </div>
       <div class="lesson">
         <span class="lesson-num">02</span>
         <p class="lesson-text">
-          <strong>App Service + VNet integration requer plano adequado.</strong>
-          Para acesso privado e VNet Integration, o tier Basic (B1) tem limitações — o ideal é Premium v2 ou superior em produção.
+          <strong>Deployment authentication matters.</strong>
+          I had to troubleshoot a failed GitHub Actions deployment and fix the authentication method before the pipeline succeeded.
         </p>
       </div>
       <div class="lesson">
         <span class="lesson-num">03</span>
         <p class="lesson-text">
-          <strong>Service Principal precisa de permissões no Resource Group.</strong>
-          O role assignment para o GitHub Actions deve ser feito no Resource Group (Contributor), não apenas no App Service — caso contrário o deploy falha silenciosamente.
+          <strong>CI/CD improves consistency.</strong>
+          After connecting GitHub Actions to Azure App Service, each push to the main branch started deploying automatically, making updates faster and more reliable.
         </p>
       </div>
     </div>
 
-    <!-- TIMELINE -->
-    <div class="section-label fade-7">Progresso do Projeto</div>
+    <div class="section-label fade-7">Project Progress</div>
     <div class="timeline fade-7">
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-body">
-          <div class="tl-title">Infraestrutura base</div>
-          <div class="tl-desc">VNets, subnets e peering configurados. NSGs e route tables definidas.</div>
+          <div class="tl-title">Core infrastructure</div>
+          <div class="tl-desc">Hub and Spoke VNets created with subnetting and private peering configured.</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-body">
           <div class="tl-title">App Service deployment</div>
-          <div class="tl-desc">App Service criado, aplicação Node.js deployed e acessível publicamente.</div>
+          <div class="tl-desc">Node.js application deployed to Azure App Service and published successfully.</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-body">
           <div class="tl-title">CI/CD pipeline</div>
-          <div class="tl-desc">GitHub Actions configurado — cada push na main faz deploy automático em ~45s.</div>
+          <div class="tl-desc">GitHub Actions configured to deploy automatically on every push to the main branch.</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-body">
-          <div class="tl-title">Próximos passos</div>
-          <div class="tl-desc">Azure Monitor + Application Insights, custom domain com SSL, e Terraform para IaC.</div>
+          <div class="tl-title">Next steps</div>
+          <div class="tl-desc">Azure Monitor, Application Insights, custom domain with SSL, and Terraform for Infrastructure as Code.</div>
         </div>
       </div>
     </div>
 
-    <!-- FOOTER -->
     <footer class="footer fade-7">
       <span class="footer-left">
-        Feito por <strong>Bruno Diniz</strong> — Azure Cloud Engineer journey
+        Built by <strong>Bruno Diniz</strong> — Building practical experience as an Azure Cloud Engineer
       </span>
       <a class="gh-link" href="https://github.com/brunocdiniz/azure-cloud-lab" target="_blank">
-        ↗ Ver no GitHub
+        ↗ View on GitHub
       </a>
     </footer>
 
@@ -643,6 +642,7 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify({ status: "ok", uptime: process.uptime() }));
     return;
   }
+
   res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
   res.end(html);
 });
