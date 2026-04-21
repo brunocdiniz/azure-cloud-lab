@@ -1,10 +1,10 @@
-# 🚀 Azure Cloud Lab
+# Azure Cloud Lab
 
 Hands-on cloud engineering project built on Microsoft Azure to demonstrate practical experience with networking, platform services, and CI/CD automation.
 
 ---
 
-## 🧠 Architecture Overview
+##  Architecture Overview
 
 This project implements a **Hub-and-Spoke network topology** using Azure Virtual Networks:
 
@@ -15,7 +15,7 @@ This project implements a **Hub-and-Spoke network topology** using Azure Virtual
 
 ---
 
-## ⚙️ Application Platform
+## Application Platform
 
 - Azure App Service (Linux)
 - Node.js 20 runtime
@@ -24,7 +24,7 @@ This project implements a **Hub-and-Spoke network topology** using Azure Virtual
 
 ---
 
-## 🔄 DevOps & CI/CD
+## DevOps & CI/CD
 
 - Source code hosted on GitHub
 - GitHub Actions pipeline
@@ -33,13 +33,13 @@ This project implements a **Hub-and-Spoke network topology** using Azure Virtual
 
 ---
 
-## 🌐 Live Application
+##  Live Application
 
-👉 https://bruno-azure-lab-app.azurewebsites.net
+👉 [https://bruno-azure-lab-app.azurewebsites.net](https://bruno-azure-lab-app-cxd3fda0faf4ayck.westeurope-01.azurewebsites.net/)
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Microsoft Azure
 - Azure Virtual Networks
@@ -50,7 +50,7 @@ This project implements a **Hub-and-Spoke network topology** using Azure Virtual
 
 ---
 
-## 🎯 Project Purpose
+##  Project Purpose
 
 This project was built to:
 
@@ -61,7 +61,7 @@ This project was built to:
 
 ---
 
-## 👤 Author
+##  Author
 
 **Bruno Diniz**
 
