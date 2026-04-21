@@ -170,9 +170,16 @@ const html = `
       This lab was designed as a practical portfolio project to showcase cloud engineering fundamentals,
       including Azure infrastructure design, application deployment, and continuous delivery.
     </div>
+    
+    <div style="margin-top:20px;">
+      <a href="https://github.com/brunocdiniz/azure-cloud-lab" target="_blank" 
+       style="color:#60a5fa; text-decoration:none; font-weight:bold;">
+       🔗 View Project on GitHub
+      </a>
+    </div>
 
     <div class="footer">
-      Built by <strong>Bruno</strong> as part of his Azure Cloud Engineer learning journey.
+      Built by <strong>Bruno Diniz</strong> as part of Azure Cloud Engineer journey.
     </div>
   </main>
 </body>
