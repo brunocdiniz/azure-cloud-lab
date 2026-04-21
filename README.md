@@ -39,21 +39,6 @@ This project implements a **Hub-and-Spoke network topology** using Azure Virtual
 
 ---
 
-## 📸 Preview
-
-> Simple cloud dashboard showing architecture, components, and deployment pipeline.
-
----
-
-## 🧪 Lessons Learned
-
-- VNet peering is not transitive and requires proper design
-- Deployment authentication must be correctly configured
-- CI/CD pipelines significantly improve deployment consistency
-- Troubleshooting real deployment failures is part of cloud engineering
-
----
-
 ## 🛠️ Technologies Used
 
 - Microsoft Azure
@@ -73,15 +58,6 @@ This project was built to:
 - Understand networking concepts like Hub-Spoke architecture
 - Implement CI/CD pipelines in a real scenario
 - Build a portfolio project aligned with Cloud Engineer roles
-
----
-
-## 🔮 Next Steps
-
-- Azure Monitor & Application Insights
-- Custom domain + SSL
-- Infrastructure as Code (Terraform)
-- Private Endpoints and security enhancements
 
 ---
 
