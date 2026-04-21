@@ -52,7 +52,7 @@ const html = `
     main {
       position: relative;
       z-index: 1;
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
     }
 
@@ -121,7 +121,7 @@ const html = `
       font-size: 16px;
       color: var(--muted);
       line-height: 1.7;
-      max-width: 600px;
+      max-width: 680px;
     }
 
     .status-bar {
@@ -211,26 +211,47 @@ const html = `
       overflow-x: auto;
     }
 
-    .diag-flow {
+    .diagram-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-width: 720px;
+    }
+
+    .diagram-row {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0;
-      min-width: 560px;
+      flex-wrap: nowrap;
+    }
+
+    .diagram-note {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 2px;
     }
 
     .diag-node {
       background: var(--subtle);
       border: 1px solid rgba(59,130,246,0.25);
       border-radius: 8px;
-      padding: 12px 16px;
+      padding: 14px 18px;
       text-align: center;
       flex-shrink: 0;
+      min-width: 140px;
     }
 
     .diag-node.accent {
       border-color: rgba(59,130,246,0.6);
       background: var(--blue-dim);
+    }
+
+    .diag-node.public {
+      border-color: rgba(34,197,94,0.45);
+      background: var(--green-dim);
     }
 
     .diag-icon {
@@ -240,7 +261,7 @@ const html = `
     }
 
     .diag-name {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 600;
       color: #fff;
       display: block;
@@ -251,13 +272,14 @@ const html = `
       font-size: 10px;
       color: var(--muted);
       display: block;
-      margin-top: 2px;
+      margin-top: 4px;
+      line-height: 1.4;
     }
 
     .diag-arrow {
       font-size: 18px;
       color: var(--blue);
-      padding: 0 10px;
+      padding: 0 12px;
       flex-shrink: 0;
     }
 
@@ -447,12 +469,12 @@ const html = `
       background: var(--blue-dim);
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 820px) {
       .metrics { grid-template-columns: repeat(2, 1fr); }
       .cards { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 520px) {
       .metrics { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -507,30 +529,40 @@ const html = `
 
     <div class="section-label fade-4">Architecture</div>
     <div class="diagram fade-4">
-      <div class="diag-flow">
-        <div class="diag-node">
-          <span class="diag-icon">⬡</span>
-          <span class="diag-name">GitHub</span>
-          <span class="diag-sub">source + CI/CD</span>
+      <div class="diagram-stack">
+
+        <div class="diagram-row">
+          <div class="diag-node">
+            <span class="diag-icon">⬡</span>
+            <span class="diag-name">GitHub</span>
+            <span class="diag-sub">repository + GitHub Actions</span>
+          </div>
+          <div class="diag-arrow">→</div>
+          <div class="diag-node public">
+            <span class="diag-icon">▣</span>
+            <span class="diag-name">App Service</span>
+            <span class="diag-sub">Linux · Free<br/>public endpoint</span>
+          </div>
         </div>
-        <div class="diag-arrow">→</div>
-        <div class="diag-node accent">
-          <span class="diag-icon">☁</span>
-          <span class="diag-name">Hub VNet</span>
-          <span class="diag-sub">10.0.0.0/16</span>
+
+        <div class="diagram-note">CI/CD flow</div>
+
+        <div class="diagram-row">
+          <div class="diag-node accent">
+            <span class="diag-icon">☁</span>
+            <span class="diag-name">Hub VNet</span>
+            <span class="diag-sub">10.0.0.0/16<br/>hub-subnet · 10.0.1.0/24</span>
+          </div>
+          <div class="diag-arrow">⇄</div>
+          <div class="diag-node accent">
+            <span class="diag-icon">⬡</span>
+            <span class="diag-name">Spoke VNet</span>
+            <span class="diag-sub">10.1.0.0/16<br/>app-subnet · 10.1.1.0/24</span>
+          </div>
         </div>
-        <div class="diag-arrow">⇄</div>
-        <div class="diag-node">
-          <span class="diag-icon">⬡</span>
-          <span class="diag-name">Spoke VNet</span>
-          <span class="diag-sub">10.1.0.0/16</span>
-        </div>
-        <div class="diag-arrow">→</div>
-        <div class="diag-node accent">
-          <span class="diag-icon">▣</span>
-          <span class="diag-name">App Service</span>
-          <span class="diag-sub">Linux · Free</span>
-        </div>
+
+        <div class="diagram-note">Azure network topology</div>
+
       </div>
     </div>
 
@@ -551,7 +583,7 @@ const html = `
           <li>Azure App Service on Linux</li>
           <li>Node.js 20 runtime</li>
           <li>Simple web app hosting</li>
-          <li>Health check endpoint</li>
+          <li>Public endpoint + health check</li>
         </ul>
       </div>
       <div class="card">
@@ -584,8 +616,8 @@ const html = `
       <div class="lesson">
         <span class="lesson-num">03</span>
         <p class="lesson-text">
-          <strong>CI/CD improves consistency.</strong>
-          After connecting GitHub Actions to Azure App Service, each push to the main branch started deploying automatically, making updates faster and more reliable.
+          <strong>App Service remained public in this lab.</strong>
+          The focus was on Azure networking and CI/CD fundamentals, without configuring VNet Integration or Private Endpoints.
         </p>
       </div>
     </div>
@@ -596,14 +628,14 @@ const html = `
         <div class="tl-dot done"></div>
         <div class="tl-body">
           <div class="tl-title">Core infrastructure</div>
-          <div class="tl-desc">Hub and Spoke VNets created with subnetting and private peering configured.</div>
+          <div class="tl-desc">Hub and Spoke VNets created with subnetting and bidirectional private peering configured.</div>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot done"></div>
         <div class="tl-body">
           <div class="tl-title">App Service deployment</div>
-          <div class="tl-desc">Node.js application deployed to Azure App Service and published successfully.</div>
+          <div class="tl-desc">Node.js application deployed to Azure App Service and published successfully through a public endpoint.</div>
         </div>
       </div>
       <div class="tl-item">
@@ -648,5 +680,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  onsole.log(`Server running on port ${port}`);
 });
