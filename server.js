@@ -555,7 +555,7 @@ const html = `
           </div>
           <div class="diag-arrow">⇄</div>
           <div class="diag-node accent">
-            <span class="diag-icon">⬡</span>
+            <span class="diag-icon">☁</span>
             <span class="diag-name">Spoke VNet</span>
             <span class="diag-sub">10.1.0.0/16<br/>app-subnet · 10.1.1.0/24</span>
           </div>
@@ -582,7 +582,7 @@ const html = `
         <ul class="card-items">
           <li>Azure App Service on Linux</li>
           <li>Node.js 20 runtime</li>
-          <li>Simple web app hosting</li>
+          <li>Lightweight Node.js application hosting</li>
           <li>Public endpoint + health check</li>
         </ul>
       </div>
